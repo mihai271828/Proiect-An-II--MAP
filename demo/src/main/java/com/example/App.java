@@ -5,11 +5,21 @@ import java.util.Arrays;
 public class App {
     public static void main(String[] args) {
         int[] noten = { 29, 37, 38, 41, 84, 67 };
+        int[] numbers={4, 8, 3, 10, 17};
         Note genug = new Note();
+        Zahlen number=new Zahlen();
+        System.out.println("Aufgabe 1 ");
         System.out.println(Arrays.toString(genug.ausreichendeNoten(noten)));
         System.out.println(genug.Durchschnittswert(noten));
         System.out.println(Arrays.toString(genug.RoundedNumber(noten)));
         System.out.println(genug.MaxRoundedNumber(noten));
+        System.out.println("Aufgabe 2 ");
+        System.out.println(number.maximaleSumme(numbers));
+        System.out.println(number.minimaleSumme(numbers));
+        System.out.println(number.maximaleZahl(numbers));
+        System.out.println(number.minimaleZahl(numbers));
+
+
     }
 
 };
@@ -72,7 +82,7 @@ class Zahlen{
         int max=0;
         for(int i=0;i<zahlen.length;i++){
             if(zahlen[i]>max){
-                zahlen[i]=max;
+                max=zahlen[i];
             }
         }
         return max;
@@ -81,24 +91,26 @@ class Zahlen{
         int min=999999;
         for(int i=0;i<zahlen.length;i++){
             if(zahlen[i]<min){
-                zahlen[i]=min;
+                min=zahlen[i];
             }
         }
         return min;
     }
 
-    int maximaleSumme(int[] zahlen){
+    int minimaleSumme(int[] zahlen){
         int sum=0;
-        for(int i=0;i<zahlen.length-1;i++){
-            sum+=zahlen[i];
+        for(int i=0;i<zahlen.length;i++){
+            
         }
         return sum;
     }
     
-    int minimaleSumme(int[] zahlen){
+    int maximaleSumme(int[] zahlen){
         int sum=0;
-        for(int i=0;i<zahlen.length-1;i++){
+        for(int i=0;i<zahlen.length;i++){
+           if(zahlen[i]>minimaleZahl(zahlen)){
             sum+=zahlen[i];
+           }
         }
         return sum;
     }
