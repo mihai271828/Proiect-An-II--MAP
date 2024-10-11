@@ -66,4 +66,26 @@ class Note {
 
 }
 
+class Zahlen{
+    
+    int maximaleZahl(int[] zahlen){
+        int max=0;
+        for(int i=0;i<zahlen.length;i++){
+            if(zahlen[i]>max){
+                zahlen[i]=max;
+            }
+        }
+        return max;
+    }
+    int minimaleZahl(int[] zahlen){
+        int min=999999;
+        for(int i=0;i<zahlen.length;i++){
+            if(zahlen[i]<min){
+                zahlen[i]=min;
+            }
+        }
+        return min;
+    }
 
+    int maximaleS
+}
