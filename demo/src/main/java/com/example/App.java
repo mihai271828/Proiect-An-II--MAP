@@ -87,5 +87,19 @@ class Zahlen{
         return min;
     }
 
-    int maximaleS
+    int maximaleSumme(int[] zahlen){
+        int sum=0;
+        for(int i=0;i<zahlen.length-1;i++){
+            sum+=zahlen[i];
+        }
+        return sum;
+    }
+    
+    int minimaleSumme(int[] zahlen){
+        int sum=0;
+        for(int i=0;i<zahlen.length-1;i++){
+            sum+=zahlen[i];
+        }
+        return sum;
+    }
 }
