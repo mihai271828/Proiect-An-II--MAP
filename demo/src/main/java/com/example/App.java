@@ -9,15 +9,15 @@ public class App {
         Note genug = new Note();
         Zahlen number=new Zahlen();
         System.out.println("Aufgabe 1 ");
-        System.out.println(Arrays.toString(genug.ausreichendeNoten(noten)));
-        System.out.println(genug.Durchschnittswert(noten));
-        System.out.println(Arrays.toString(genug.RoundedNumber(noten)));
-        System.out.println(genug.MaxRoundedNumber(noten));
+        System.out.println("AusreichendeNoten: "+Arrays.toString(genug.ausreichendeNoten(noten)));
+        System.out.println("Mean: "+genug.Durchschnittswert(noten));
+        System.out.println("RoundedArray: "+Arrays.toString(genug.RoundedNumber(noten)));
+        System.out.println("RoundedMaxNumber: " +genug.MaxRoundedNumber(noten));
         System.out.println("Aufgabe 2 ");
-        System.out.println(number.maximaleSumme(numbers));
-        System.out.println(number.minimaleSumme(numbers));
-        System.out.println(number.maximaleZahl(numbers));
-        System.out.println(number.minimaleZahl(numbers));
+        System.out.println("MaximaleSumme: "+number.maximaleSumme(numbers));
+        System.out.println("MinimaleSumme: "+number.minimaleSumme(numbers));
+        System.out.println("MaximaleZahl: "+number.maximaleZahl(numbers));
+        System.out.println("MinimaleZahl: "+number.minimaleZahl(numbers));
 
 
     }
@@ -100,7 +100,9 @@ class Zahlen{
     int minimaleSumme(int[] zahlen){
         int sum=0;
         for(int i=0;i<zahlen.length;i++){
-            
+            if(zahlen[i]<maximaleZahl(zahlen)){
+                sum+=zahlen[i];
+            }
         }
         return sum;
     }
