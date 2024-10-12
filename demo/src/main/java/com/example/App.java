@@ -8,8 +8,8 @@ public class App {
         int[] numbers = { 4, 8, 3, 10, 17 };
         int[] arr1 = { 130000000 };
         int[] arr2 = { 870000000 };
-        int[] keyboards={15,20,10,35};
-        int[] usbs={20,15,40,15};
+        int[] keyboards={40,60};
+        int[] usbs={8,12};
         Note genug = new Note();
         Zahlen number = new Zahlen();
         // GrosseZahlen zahl = new GrosseZahlen();
@@ -27,7 +27,8 @@ public class App {
         // System.out.println(Arrays.toString(zahl.summe(arr1, arr2)));
         System.out.println(gadget.biligste(keyboards));
         System.out.println(gadget.teursten(keyboards, usbs));
-
+        System.out.println(gadget.affordable(usbs, 30));
+        System.out.println(gadget.bothaffordable(60,keyboards,usbs));
     }
 
 };
@@ -202,18 +203,19 @@ class IntWrapper {
         int affordable(int[] usbs, int budget){
             int max=0;
             for(int usb:usbs){
-                if(usb>max && max<budget)
+                if(usb>max && usb<budget)
                 max=usb;
             }
             return max;     
         }
 
         int bothaffordable(int budget, int[]keyboards, int[]usbs){
-            int max=0;
+            int max=-1;
             for(int keyboard:keyboards){
                 for(int usb:usbs){
-                    if(keyboard+usb>max && max<budget)
-                    max=keyboard+usb;
+                    if(keyboard+usb>max && keyboard+usb<budget)
+                    {max=keyboard+usb;}
+                   
                 }
             }
             return max;
