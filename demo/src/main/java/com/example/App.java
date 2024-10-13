@@ -7,7 +7,10 @@ public class App {
         int[] noten = { 29, 37, 38, 41, 84, 67 };
         int[] numbers = { 4, 8, 3, 10, 17 };
         int[] arr1 = { 1,3,0,0,0,0,0,0,0 };
-        int[] arr2 = { 8,7,0,0,0,0,0,0,0 };
+        int[] arr2 ={ 8,7,0,0,0,0,0,0,0 };
+        int[] arr3={8,3,0,0,0,0,0,0,0};
+        int[] arr4={5,4,0,0,0,0,0,0,0};
+        int[] arr5={2,3,6,0,0,0,0,0,0};
         int[] result={};
         int[] keyboards={40,60};
         int[] usbs={8,12};
@@ -29,8 +32,9 @@ public class App {
         System.out.println(gadget.teursten(keyboards, usbs));
         System.out.println(gadget.affordable(usbs, 30));
         System.out.println(gadget.bothaffordable(60,keyboards,usbs));
-        System.out.println(Arrays.toString(zahl.summe(arr1, arr2,result)));
-
+        System.out.println("Summe: "+Arrays.toString(zahl.summe(arr1, arr2,result)));
+        System.out.println("Difference: " +Arrays.toString(zahl.diff(arr3, arr4, result)));
+        System.out.println("Multiplikation: "+Arrays.toString(zahl.multiplikation(arr5, 2)));
 
         
 
@@ -173,7 +177,66 @@ class GrosseZahlen {
         }
         return result;
     }
-    
+    int[] diff(int[] arr1,int[] arr2, int[]result){
+        int maxLength=Math.max(arr1.length, arr2.length);
+        result=new int[maxLength];
+
+        int borrow=0;
+        int i=arr1.length-1;
+        int j=arr2.length-1;
+        int k=result.length-1;
+        int digitA, digitB;
+        while(i>=0 || j>=0 ){
+            
+            if(i>=0){
+                digitA=arr1[i];
+            }
+            else{
+                digitA=0;
+            }
+            if (j>=0) {
+                digitB=arr2[j];
+            }
+            else{
+                digitB=0;
+            }
+            int sub=digitA-digitB-borrow;
+            if(sub<0){
+                sub+=10;
+                borrow=1;
+            }
+            else{
+                borrow=0;
+            }
+            result[k]=sub;
+
+            i--;
+            j--;
+            k--;
+
+        }
+
+        return result;
+    }
+    int[] multiplikation(int[] arr, int factor){
+        int[] result=new int[arr.length+1];
+        int sum=0;
+        int carry=0;
+        int k=result.length-1;
+        for(int i=arr.length-1;i>=0;i--){
+            sum=arr[i]*factor+carry;
+            result[k--]=sum%10;
+            carry=sum/10;
+        }
+        if(carry>0){
+            result[k--]=carry;
+        }
+        
+        int startIndex=k+1;
+        int[] finalResult=new int[result.length-startIndex];
+        System.arraycopy(result, startIndex, finalResult, 0, finalResult.length);
+        return finalResult;
+    }
 }
     class Electronics{
         int biligste(int[] keyboard){
